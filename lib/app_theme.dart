@@ -68,6 +68,8 @@ class AppTheme {
       backgroundColor: grey,
       selectedItemColor: primary,
       unselectedItemColor: white,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
     ),
     textTheme: TextTheme(
       labelLarge:
