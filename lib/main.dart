@@ -4,6 +4,7 @@ import 'package:movies/auth/forget_screen.dart';
 import 'package:movies/auth/login_screen.dart';
 import 'package:movies/auth/register_screen.dart';
 import 'package:movies/home_screen.dart';
+import 'package:movies/profile/update_profile.dart';
 
 void main() {
   runApp(const MoviesApp());
@@ -20,6 +21,7 @@ class MoviesApp extends StatelessWidget {
         RegisterScreen.routeName: (_) => RegisterScreen(),
         LoginScreen.routeName: (_) => LoginScreen(),
         ForgetScreen.routeName: (_) => ForgetScreen(),
+        UpdateProfile.routeName: (_) => UpdateProfile(),
       },
       initialRoute: RegisterScreen.routeName,
       theme: AppTheme.lightTheme,
