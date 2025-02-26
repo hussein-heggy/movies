@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/app_theme.dart';
 import 'package:movies/auth/forget_screen.dart';
 import 'package:movies/auth/register_screen.dart';
+import 'package:movies/home_screen.dart';
 import 'package:movies/widgets/default_eleveted_button.dart';
 import 'package:movies/widgets/default_texdt_button.dart';
 
@@ -13,8 +14,15 @@ class LoginScreen extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    void login() {
+      if (formKey.currentState!.validate()) {
+        Navigator.pushNamed(context, HomeScreen.routeName);
+      }
+    }
+
     double height = MediaQuery.sizeOf(context).height;
 
     return Scaffold(
@@ -143,11 +151,5 @@ class LoginScreen extends StatelessWidget {
 
   void loginWithGoogal() {
     // loginWithGooga
-  }
-
-  void login() {
-    if (formKey.currentState!.validate()) {
-      // login
-    }
   }
 }
