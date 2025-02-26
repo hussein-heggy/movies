@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies/app_theme.dart';
+import 'package:movies/auth/forget_screen.dart';
+import 'package:movies/auth/login_screen.dart';
+import 'package:movies/auth/register_screen.dart';
 import 'package:movies/home_screen.dart';
 
 void main() {
@@ -14,8 +17,11 @@ class MoviesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         HomeScreen.routeName: (_) => HomeScreen(),
+        RegisterScreen.routeName: (_) => RegisterScreen(),
+        LoginScreen.routeName: (_) => LoginScreen(),
+        ForgetScreen.routeName: (_) => ForgetScreen(),
       },
-      initialRoute: HomeScreen.routeName,
+      initialRoute: RegisterScreen.routeName,
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
     );
