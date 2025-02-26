@@ -23,30 +23,40 @@ class AppTheme {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
+      prefixStyle: TextStyle(color: white),
+      suffixIconColor: white,
       hintStyle: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: white,
       ),
       border: OutlineInputBorder(
+        borderSide: BorderSide(color: grey),
         borderRadius: BorderRadius.circular(15),
       ),
       focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: grey),
         borderRadius: BorderRadius.circular(15),
       ),
       enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: grey),
         borderRadius: BorderRadius.circular(15),
       ),
       disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: grey),
         borderRadius: BorderRadius.circular(15),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(width: 1, color: AppTheme.red),
+        borderSide: BorderSide(color: AppTheme.red),
         borderRadius: BorderRadius.circular(15),
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        textStyle: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w400,
+        ),
         backgroundColor: primary,
         foregroundColor: black,
         shape: RoundedRectangleBorder(

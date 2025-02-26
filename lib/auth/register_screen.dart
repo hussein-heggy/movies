@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:movies/app_theme.dart';
 import 'package:movies/auth/login_screen.dart';
 import 'package:movies/widgets/default_eleveted_button.dart';
-import 'package:movies/widgets/default_text_button.dart';
+import 'package:movies/widgets/default_texdt_button.dart';
+
+// import 'package:movies/widgets/default_text_button.dart';
 import 'package:movies/widgets/default_text_form_field.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
-  static String routeName = "/register";
+  static String routeName = "\register";
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
@@ -33,27 +34,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                SizedBox(height: height * 0.02),
-                CarouselSlider.builder(
-                  itemCount: 3,
-                  options: CarouselOptions(
-                      height: height * 0.25,
-                      enlargeCenterPage: true,
-                      enlargeFactor: 0.5,
-                      // aspectRatio: 2,
-                      viewportFraction: 0.36),
-                  itemBuilder: (BuildContext context, int itemIndex,
-                          int pageViewIndex) =>
-                      Container(
-                    child: Image.asset(image[itemIndex]),
-                  ),
+          child: Column(
+            children: [
+              SizedBox(height: height * 0.02),
+              CarouselSlider.builder(
+                itemCount: 3,
+                options: CarouselOptions(
+                    height: height * 0.15,
+                    enlargeCenterPage: true,
+                    enlargeFactor: 0.5,
+                    // aspectRatio: 2,
+                    viewportFraction: 0.36),
+                itemBuilder:
+                    (BuildContext context, int itemIndex, int pageViewIndex) =>
+                        Container(
+                  child: Image.asset(image[itemIndex]),
                 ),
-                Expanded(
-                    child: Column(
+              ),
+              SizedBox(height: height * 0.02),
+              Expanded(
+                  child: Form(
+                key: formKey,
+                child: Column(
                   children: [
                     DefaultTextFormField(
                         validator: (value) {
@@ -64,8 +66,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                         controller: nameController,
                         hintText: "Name",
-                        prefixeIconName: "Name"),
-                    SizedBox(height: height * 0.025),
+                        prefixeIconName: "name"),
+                    SizedBox(height: height * 0.02),
                     DefaultTextFormField(
                         validator: (value) {
                           if (value == null || value.length < 8) {
@@ -75,33 +77,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                         controller: emailController,
                         hintText: "Email",
-                        prefixeIconName: "Email"),
-                    SizedBox(height: height * 0.025),
+                        prefixeIconName: "email"),
+                    SizedBox(height: height * 0.02),
                     DefaultTextFormField(
+                        isPassword: true,
                         validator: (value) {
                           if (value == null || value.length < 8) {
                             return "Invalid password";
                           }
                           return null;
                         },
-                        isPassword: true,
+                        // isPassword: true,
                         controller: passwordController,
                         hintText: "Password",
                         prefixeIconName: "password"),
-                    SizedBox(height: height * 0.025),
+                    SizedBox(height: height * 0.02),
                     DefaultTextFormField(
+                        isPassword: true,
                         validator: (value) {
-                          if (value == null ||
-                              value != passwordController.text) {
-                            return "Invalid ConfirmPassword";
+                          if (value!.isEmpty) {
+                            return "empty password";
+                          }
+                          if (value != passwordController.text) {
+                            return "ConfirmPassword must match password";
                           }
                           return null;
                         },
-                        isPassword: true,
+                        // isPassword: true,
                         controller: confirmPasswordController,
                         hintText: "ConfirmPassword",
                         prefixeIconName: "password"),
-                    SizedBox(height: height * 0.025),
+                    SizedBox(height: height * 0.02),
                     DefaultTextFormField(
                         validator: (value) {
                           if (value == null || value.length < 15) {
@@ -111,31 +117,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                         controller: phoneNumberController,
                         hintText: "PhoneNumber",
-                        prefixeIconName: "Phone"),
-                    SizedBox(height: height * 0.025),
+                        prefixeIconName: "phone"),
+                    SizedBox(height: height * 0.02),
                     DefaultElevetedButton(
-                        onpressed: register,
-                        background: AppTheme.primary,
-                        foreground: AppTheme.black,
-                        lable: "Creat Account"),
+                        onpressed: register, label: "Creat Account"),
                     SizedBox(height: height * 0.001),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Already Have Account",
                             style: Theme.of(context).textTheme.bodySmall),
-                        DefaultTextButton(
-                            onpressed: () {
-                              Navigator.of(context)
-                                  .pushNamed(LoginScreen.routeName);
-                            },
-                            lable: "Login"),
+                        DefaultTexdtButton(
+                          label: "Login",
+                          onpressed: () {
+                            Navigator.of(context)
+                                .pushNamed(LoginScreen.routeName);
+                          },
+                        )
                       ],
                     ),
                   ],
-                ))
-              ],
-            ),
+                ),
+              ))
+            ],
           ),
         ),
       ),
